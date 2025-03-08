@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        main {
+            width: 80%;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .rate {
+            margin-top: 30px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="number"], input[type="radio"] {
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        input[type="radio"] {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+
+        hr {
+            border: 1px solid #ddd;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section>
+            <h3>Details of Item</h3>
+            <table>
+                <tr>
+                    <th>S.R. No.</th>
+                    <th>Item Name</th>
+                    <th>Quantity</th>
+                    <th>Availability in Stock</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Chaap</td>
+                    <td>4</td>
+                    <td>YES</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Lassi</td>
+                    <td>5</td>
+                    <td>Low</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Butter Chicken</td>
+                    <td>10</td>
+                    <td>YES</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Dal Makhani</td>
+                    <td>15</td>
+                    <td>YES</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Paneer Tikka</td>
+                    <td>8</td>
+                    <td>Low</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Chole Bhature</td>
+                    <td>12</td>
+                    <td>YES</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Vada Pav</td>
+                    <td>20</td>
+                    <td>YES</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Biryani</td>
+                    <td>6</td>
+                    <td>Out of Stock</td>
+                </tr>
+            </table>
+        </section>
+
+        <hr>
+
+        <section class="rate">
+            <h3>Update Inventory</h3>
+            <form action="inventory">
+                <label for="itemName">Item Name: </label>
+                <input type="text" name="itemName" id="itemName" required>
+                <br>
+
+                <label for="rate">Rate of Quantity: </label>
+                <input type="number" name="rate" id="rate" min="0" step="1" required>
+                <br>
+
+                <label for="availability">Stock Status: </label>
+                <input type="radio" name="availability" id="inStock" value="In Stock"> In Stock
+                <input type="radio" name="availability" id="outOfStock" value="Out of Stock"> Out of Stock
+                <input type="radio" name="availability" id="lowStock" value="Low Stock"> Low Stock
+                <br>
+
+                <button type="submit" class="submit-btn">Update Item</button>
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>

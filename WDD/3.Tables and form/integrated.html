@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        main {
+            width: 80%;
+            margin: 20px auto;
+            background-color: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 90%;
+            border-collapse: collapse;
+            margin-top: 2px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .rate {
+            margin-top: 30px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="radio"] {
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        input[type="radio"] {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+
+        hr {
+            border: 1px solid #ddd;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section>
+            <h3>Details of Item</h3>
+            <form action="inventory" method="POST">
+                <table>
+                    <tr>
+                        <th>S.R. No.</th>
+                        <th>Item Name</th>
+                        <th>Quantity</th>
+                        <th>Availability in Stock</th>
+                        <th>Rate of Quantity</th>
+                        <th>Stock Status</th>
+                        <th>Update</th>
+                    </tr>
+                    <!-- Chaap Row -->
+                    <tr>
+                        <td>1</td>
+                        <td><input type="text" name="itemName1" value="Chaap" required></td>
+                        <td><input type="number" name="quantity1" value="4" min="0" required></td>
+                        <td><input type="radio" name="availability1" value="In Stock" checked> In Stock
+                            <input type="radio" name="availability1" value="Low Stock"> Low Stock
+                            <input type="radio" name="availability1" value="Out of Stock"> Out of Stock
+                        </td>
+                        <td><input type="number" name="rate1" value="100" min="0" step="1" required></td>
+                        <td><button type="submit" class="submit-btn">Update</button></td>
+                    </tr>
+                    <!-- Lassi Row -->
+                    <tr>
+                        <td>2</td>
+                        <td><input type="text" name="itemName2" value="Lassi" required></td>
+                        <td><input type="number" name="quantity2" value="5" min="0" required></td>
+                        <td><input type="radio" name="availability2" value="In Stock"> In Stock
+                            <input type="radio" name="availability2" value="Low Stock" checked> Low Stock
+                            <input type="radio" name="availability2" value="Out of Stock"> Out of Stock
+                        </td>
+                        <td><input type="number" name="rate2" value="50" min="0" step="1" required></td>
+                        <td><button type="submit" class="submit-btn">Update</button></td>
+                    </tr>
+                    <!-- Butter Chicken Row -->
+                    <tr>
+                        <td>3</td>
+                        <td><input type="text" name="itemName3" value="Butter Chicken" required></td>
+                        <td><input type="number" name="quantity3" value="10" min="0" required></td>
+                        <td><input type="radio" name="availability3" value="In Stock" checked> In Stock
+                            <input type="radio" name="availability3" value="Low Stock"> Low Stock
+                            <input type="radio" name="availability3" value="Out of Stock"> Out of Stock
+                        </td>
+                        <td><input type="number" name="rate3" value="250" min="0" step="1" required></td>
+                        <td><button type="submit" class="submit-btn">Update</button></td>
+                    </tr>
+                    <!-- Dal Makhani Row -->
+                    <tr>
+                        <td>4</td>
+                        <td><input type="text" name="itemName4" value="Dal Makhani" required></td>
+                        <td><input type="number" name="quantity4" value="15" min="0" required></td>
+                        <td><input type="radio" name="availability4" value="In Stock" checked> In Stock
+                            <input type="radio" name="availability4" value="Low Stock"> Low Stock
+                            <input type="radio" name="availability4" value="Out of Stock"> Out of Stock
+                        </td>
+                        <td><input type="number" name="rate4" value="150" min="0" step="1" required></td>
+                        <td><button type="submit" class="submit-btn">Update</button></td>
+                    </tr>
+                    <!-- Paneer Tikka Row -->
+                    <tr>
+                        <td>5</td>
+                        <td><input type="text" name="itemName5" value="Paneer Tikka" required></td>
+                        <td><input type="number" name="quantity5" value="8" min="0" required></td>
+                        <td><input type="radio" name="availability5" value="In Stock"> In Stock
+                            <input type="radio" name="availability5" value="Low Stock" checked> Low Stock
+                            <input type="radio" name="availability5" value="Out of Stock"> Out of Stock
+                        </td>
+                        <td><input type="number" name="rate5" value="180" min="0" step="1" required></td>
+                        <td><button type="submit" class="submit-btn">Update</button></td>
+                    </tr>
+                    <!-- Chole Bhature Row -->
+                    <tr>
+                        <td>6</td>
+                        <td><input type="text" name="itemName6" value="Chole Bhature" required></td>
+                        <td><input type="number" name="quantity6" value="12" min="0" required></td>
+                        <td><input type="radio" name="availability6" value="In Stock" checked> In Stock
+                            <input type="radio" name="availability6" value="Low Stock"> Low Stock
+                            <input type="radio" name="availability6" value="Out of Stock"> Out of Stock
+                        </td>
+                        <td><input type="number" name="rate6" value="120" min="0" step="1" required></td>
+                        <td><button type="submit" class="submit-btn">Update</button></td>
+                    </tr>
+                    <!-- Vada Pav Row -->
+                    <tr>
+                        <td>7</td>
+                        <td><input type="text" name="itemName7" value="Vada Pav" required></td>
+                        <td><input type="number" name="quantity7" value="20" min="0" required></td>
+                        <td><input type="radio" name="availability7" value="In Stock" checked> In Stock
+                            <input type="radio" name="availability7" value="Low Stock"> Low Stock
+                            <input type="radio" name="availability7" value="Out of Stock"> Out of Stock
+                        </td>
+                        <td><input type="number" name="rate7" value="40" min="0" step="1" required></td>
+                        <td><button type="submit" class="submit-btn">Update</button></td>
+                    </tr>
+                    <!-- Biryani Row -->
+                    <tr>
+                        <td>8</td>
+                        <td><input type="text" name="itemName8" value="Biryani" required></td>
+                        <td><input type="number" name="quantity8" value="6" min="0" required></td>
+                        <td><input type="radio" name="availability8" value="In Stock"> In Stock
+                            <input type="radio" name="availability8" value="Low Stock"> Low Stock
+                            <input type="radio" name="availability8" value="Out of Stock" checked> Out of Stock
+                        </td>
+                        <td><input type="number" name="rate8" value="300" min="0" step="1" required></td>
+                        <td><button type="submit" class="submit-btn">Update</button></td>
+                    </tr>
+                </table>
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>
