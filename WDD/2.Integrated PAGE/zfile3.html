@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Form - Amity University</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 60px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 10px 0;
+            font-weight: bold;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #ffcc00;
+        }
+
+        nav a.active {
+            color: #ffcc00;
+        }
+
+        /* Main Content Styles */
+        main {
+            padding: 40px 0;
+        }
+
+        .university-info {
+            margin-bottom: 40px;
+        }
+
+        h1, h2, h3 {
+            color: #003366;
+            margin-bottom: 20px;
+        }
+
+        .university-info p {
+            margin-bottom: 15px;
+        }
+
+        /* Admission Form Styles */
+        .admission-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            flex: 1 1 300px;
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        select {
+            height: 42px;
+        }
+
+        .submit-btn {
+            background-color: #003366;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .submit-btn:hover {
+            background-color: #002244;
+        }
+
+        /* Program List Styles */
+        .programs-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .program-category {
+            flex: 1 1 300px;
+            margin-bottom: 30px;
+            margin-right: 20px;
+        }
+
+        .program-category h3 {
+            border-bottom: 2px solid #003366;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .program-category ul {
+            list-style-type: none;
+        }
+
+        .program-category li {
+            margin-bottom: 8px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .program-category li:before {
+            content: "•";
+            color: #003366;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #003366;
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer-column {
+            flex: 1 1 250px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-column p, .footer-column a {
+            color: #ccc;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+        }
+
+        .footer-column a:hover {
+            color: #ffcc00;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: #aaa;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container header-content">
+            <img src="https://amity.edu/images/logo.png" alt="Amity University Logo" class="logo">
+            <nav>
+                <a href="index.html" class="active">Home</a>
+                <a href="zfile1.html">About Us</a>
+                <a href="zfile2.html">Our Services</a>
+                <a href="zfile3.html">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="university-info">
+                <h1>Welcome to Amity University</h1>
+                <p>Amity University is a leading private university in India with a strong focus on research, innovation, and entrepreneurship. Established in 2005, Amity has grown to become one of the most respected educational institutions in the country, offering a wide range of undergraduate, postgraduate, and doctoral programs across diverse disciplines.</p>
+                
+                <p>At Amity University, we believe in providing a holistic education that prepares students for the challenges of the global workplace. Our curriculum is designed to foster critical thinking, creativity, and leadership skills, with a strong emphasis on practical learning and industry exposure.</p>
+                
+                <p>With state-of-the-art infrastructure, world-class faculty, and numerous international collaborations, Amity University offers a truly global learning experience. Our campuses are vibrant communities where students from diverse backgrounds come together to learn, innovate, and grow.</p>
+            </section>
+
+            <section class="admission-form">
+                <h2>Admission Form</h2>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dob">Date of Birth</label>
+                            <input type="date" id="dob" name="dob" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <textarea id="address" name="address" rows="3" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="level">Program Level</label>
+                            <select id="level" name="level" required>
+                                <option value="">Select Program Level</option>
+                                <option value="undergraduate">Undergraduate</option>
+                                <option value="postgraduate">Postgraduate</option>
+                                <option value="doctoral">Doctoral</option>
+                                <option value="diploma">Diploma</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="program">Program of Interest</label>
+                            <select id="program" name="program" required>
+                                <option value="">Select Program</option>
+                                <option value="btech">B.Tech</option>
+                                <option value="mtech">M.Tech</option>
+                                <option value="bba">BBA</option>
+                                <option value="mba">MBA</option>
+                                <option value="bsc">B.Sc</option>
+                                <option value="msc">M.Sc</option>
+                                <option value="ba">BA</option>
+                                <option value="ma">MA</option>
+                                <option value="phd">Ph.D</option>
+                                <option value="llb">LLB</option>
+                                <option value="llm">LLM</option>
+                                <option value="bdesign">B.Design</option>
+                                <option value="mdesign">M.Design</option>
+                                <option value="bjmc">BJMC</option>
+                                <option value="mjmc">MJMC</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="qualification">Highest Qualification</label>
+                            <input type="text" id="qualification" name="qualification" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="percentage">Percentage/CGPA</label>
+                            <input type="text" id="percentage" name="percentage" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <button type="submit" class="submit-btn">Submit Application</button>
+                    </div>
+                </form>
+            </section>
+
+            <section>
+                <h2>Degrees Offered by Amity University</h2>
+                <div class="programs-list">
+                    <div class="program-category">
+                        <h3>Engineering & Technology</h3>
+                        <ul>
+                            <li>B.Tech in Computer Science & Engineering</li>
+                            <li>B.Tech in Electronics & Communication</li>
+                            <li>B.Tech in Mechanical Engineering</li>
+                            <li>B.Tech in Civil Engineering</li>
+                            <li>B.Tech in Information Technology</li>
+                            <li>B.Tech in Aerospace Engineering</li>
+                            <li>M.Tech in Computer Science</li>
+                            <li>M.Tech in Data Science</li>
+                            <li>M.Tech in AI & Machine Learning</li>
+                        </ul>
+                    </div>
+
+                    <div class="program-category">
+                        <h3>Business & Management</h3>
+                        <ul>
+                            <li>BBA</li>
+                            <li>MBA</li>
+                            <li>MBA in Finance</li>
+                            <li>MBA in Marketing</li>
+                            <li>MBA in HR</li>
+                            <li>MBA in International Business</li>
+                            <li>MBA in Banking & Finance</li>
+                            <li>MBA in Entrepreneurship</li>
+                            <li>Executive MBA</li>
+                        </ul>
+                    </div>
+
+                    <div class="program-category">
+                        <h3>Science & Technology</h3>
+                        <ul>
+                            <li>B.Sc in Physics</li>
+                            <li>B.Sc in Chemistry</li>
+                            <li>B.Sc in Mathematics</li>
+                            <li>B.Sc in Biotechnology</li>
+                            <li>B.Sc in Microbiology</li>
+                            <li>M.Sc in Physics</li>
+                            <li>M.Sc in Chemistry</li>
+                            <li>M.Sc in Environmental Science</li>
+                            <li>M.Sc in Biotechnology</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="programs-list">
+                    <div class="program-category">
+                        <h3>Law</h3>
+                        <ul>
+                            <li>BA LLB (Hons.)</li>
+                            <li>BBA LLB (Hons.)</li>
+                            <li>LLB</li>
+                            <li>LLM in Corporate Law</li>
+                            <li>LLM in International Law</li>
+                            <li>LLM in Intellectual Property Rights</li>
+                        </ul>
+                    </div>
+
+                    <div class="program-category">
+                        <h3>Arts & Humanities</h3>
+                        <ul>
+                            <li>BA in Psychology</li>
+                            <li>BA in Economics</li>
+                            <li>BA in English</li>
+                            <li>BA in Political Science</li>
+                            <li>MA in Psychology</li>
+                            <li>MA in Economics</li>
+                            <li>MA in English</li>
+                            <li>MA in Public Policy</li>
+                        </ul>
+                    </div>
+
+                    <div class="program-category">
+                        <h3>Design & Media</h3>
+                        <ul>
+                            <li>Bachelor of Design</li>
+                            <li>Bachelor of Fashion Design</li>
+                            <li>Bachelor of Interior Design</li>
+                            <li>BA in Journalism & Mass Communication</li>
+                            <li>Master of Design</li>
+                            <li>Master of Fashion Design</li>
+                            <li>MA in Journalism & Mass Communication</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <p>Amity University</p>
+                <p>Sector 125, Noida - 201313</p>
+                <p>Uttar Pradesh, India</p>
+                <p>Phone: 0120-2445252</p>
+                <p>Email: admissions@amity.edu</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <a href="#">About Us</a>
+                <a href="#">Academics</a>
+                <a href="#">Admissions</a>
+                <a href="#">Research</a>
+                <a href="#">Campus Life</a>
+                <a href="#">Placements</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Campus Locations</h3>
+                <a href="#">Noida</a>
+                <a href="#">Lucknow</a>
+                <a href="#">Jaipur</a>
+                <a href="#">Gwalior</a>
+                <a href="#">Mumbai</a>
+                <a href="#">Kolkata</a>
+                <a href="#">Dubai</a>
+                <a href="#">London</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Connect With Us</h3>
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">YouTube</a>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <p>© 2025 Amity University. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

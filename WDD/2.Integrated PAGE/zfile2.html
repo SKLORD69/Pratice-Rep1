@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Amity University</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #2ecc71;
+            --secondary-color: #f39c12;
+            --light-bg: #e8f8f0;
+            --dark-bg: #27ae60;
+            --text-color: #333;
+            --light-text: #fff;
+            --shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            background-color: #f7f7f7;
+            color: var(--text-color);
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            box-shadow: var(--shadow);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-container img {
+            height: 60px;
+            margin-right: 10px;
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            margin-left: 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: var(--dark-bg);
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-bg));
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        main {
+            padding: 40px 0;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-icon {
+            background-color: var(--light-bg);
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .service-icon span {
+            font-size: 3rem;
+            color: var(--primary-color);
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .service-content p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .service-content a {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .service-content a:hover {
+            background-color: var(--dark-bg);
+        }
+        
+        .testimonials {
+            background-color: var(--light-bg);
+            padding: 40px 0;
+            margin: 40px 0;
+        }
+        
+        .testimonial-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            max-width: 350px;
+            position: relative;
+        }
+        
+        .testimonial:before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--light-bg);
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            line-height: 1;
+            z-index: 0;
+        }
+        
+        .testimonial p {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        
+        .process-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0;
+            margin-top: 30px;
+            position: relative;
+        }
+        
+        .process-step {
+            flex: 1;
+            min-width: 250px;
+            padding: 25px;
+            background: white;
+            position: relative;
+            z-index: 1;
+            border-radius: 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .process-step:first-child {
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+        
+        .process-step:last-child {
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+        
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .process-step h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 30px 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 10px;
+        }
+        
+        .footer-section p, .footer-section a {
+            margin-bottom: 10px;
+            display: block;
+            color: #e0f5e9;
+            text-decoration: none;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            color: #e0f5e9;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="nav">
+                <div class="logo-container">
+                    <img src="https://amity.edu/images/logo.png" alt="Amity University Logo">
+                </div>
+                <nav>
+                    <a class="nav-home" href="index.html">Home</a>
+                    <a class="nav-about" href="zfile1.html">About Us</a>
+                    <a class="nav-services" href="zfile2.html">Our Services</a>
+                    <a class="nav-contact" href="zfile3.html">Contact Us</a>
+                </nav>
+            </div>
+        </div>
+        <div class="hero">
+            <div class="container">
+                <h1>Our Services</h1>
+                <p>Comprehensive educational solutions to empower your future</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="section">
+                <h2 class="section-title">Academic Services</h2>
+                <p>At Amity University, we offer a wide range of academic services designed to provide students with a comprehensive and enriching educational experience. Our services are tailored to meet diverse learning needs and career aspirations.</p>
+                
+                <div class="service-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <span>📚</span>
+                        </div>
+                        <div class="service-content">
+                            <h3>Undergraduate Programs</h3>
+                            <p>Amity offers 300+ undergraduate programs across various disciplines including Engineering, Management, Law, Biotechnology, Fashion, and more.</p>
+                            <a href="#">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <span>🎓</span>
+                        </div>
+                        <div class="service-content">
+                            <h3>Postgraduate Studies</h3>
+                            <p>Advance your career with our specialized postgraduate programs designed to provide in-depth knowledge and research opportunities.</p>
+                            <a href="#">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <span>🔬</span>
+                        </div>
+                        <div class="service-content">
+                            <h3>Research Facilities</h3>
+                            <p>Access state-of-the-art laboratories and research centers equipped with cutting-edge technology to support innovative research.</p>
+                            <a href="#">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">Student Support Services</h2>
+                <p>We believe in providing comprehensive support to our students throughout their academic journey. Our student support services are designed to enhance the learning experience and promote overall wellbeing.</p>
+                
+                <div class="service-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <span>🌟</span>
+                        </div>
+                        <div class="service-content">
+                            <h3>Career Development</h3>
+                            <p>Our Career Development Center offers counseling, workshops, internship placements, and job fairs to prepare students for successful careers.</p>
+                            <a href="#">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <span>🏆</span>
+                        </div>
+                        <div class="service-content">
+                            <h3>Student Activities</h3>
+                            <p>Engage in a vibrant campus life with various clubs, cultural events, sports competitions, and leadership opportunities.</p>
+                            <a href="#">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <span>🌐</span>
+                        </div>
+                        <div class="service-content">
+                            <h3>International Exchange</h3>
+                            <p>Expand your horizons through our international exchange programs with partner universities around the world.</p>
+                            <a href="#">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <div class="testimonials">
+                <div class="container">
+                    <h2 class="section-title">What Our Students Say</h2>
+                    <div class="testimonial-container">
+                        <div class="testimonial">
+                            <p>The career services at Amity University were instrumental in helping me secure my dream job. The counselors provided personalized guidance throughout my job search process.</p>
+                            <div class="testimonial-author">
+                                <img src="/api/placeholder/80/80" alt="Student">
+                                <div>
+                                    <strong>Rahul Singh</strong>
+                                    <p>BTech Computer Science, 2023</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial">
+                            <p>The international exchange program allowed me to study for a semester in the UK. It was a life-changing experience that broadened my perspective and enhanced my resume.</p>
+                            <div class="testimonial-author">
+                                <img src="/api/placeholder/80/80" alt="Student">
+                                <div>
+                                    <strong>Priya Sharma</strong>
+                                    <p>MBA International Business, 2022</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial">
+                            <p>The research facilities at Amity are world-class. I had access to advanced equipment that was essential for my doctoral research in biotechnology.</p>
+                            <div class="testimonial-author">
+                                <img src="/api/placeholder/80/80" alt="Student">
+                                <div>
+                                    <strong>Dr. Ankit Patel</strong>
+                                    <p>PhD Biotechnology, 2024</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <section class="section">
+                <h2 class="section-title">How to Apply</h2>
+                <p>Joining Amity University is a straightforward process. Follow these steps to begin your journey with us:</p>
+                
+                <div class="process-container">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h4>Choose Your Program</h4>
+                        <p>Browse our extensive catalog of programs and select the one that aligns with your career goals and interests.</p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h4>Submit Application</h4>
+                        <p>Complete the online application form with your personal details, academic history, and program preferences.</p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h4>Entrance Test</h4>
+                        <p>Prepare for and take the Amity entrance examination or submit scores from recognized national/international tests.</p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <h4>Enroll & Begin</h4>
+                        <p>Upon acceptance, complete the enrollment process, pay tuition fees, and embark on your educational journey.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Amity University Campus</p>
+                    <p>Sector 125, Noida, Uttar Pradesh</p>
+                    <p>India - 201313</p>
+                    <p>Email: info@amity.edu</p>
+                    <p>Phone: +91 120 4392000</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#">Admissions</a>
+                    <a href="#">Academic Programs</a>
+                    <a href="#">Research</a>
+                    <a href="#">Campus Life</a>
+                    <a href="#">International Students</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <a href="#">Facebook</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">YouTube</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Amity University. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
