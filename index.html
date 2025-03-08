@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAHIL SHARMA | Game Developer</title>
+    <style>
+        :root {
+            --neon-blue: #0ff;
+            --neon-pink: #ff00ff;
+            --neon-orange: #ff6d00;
+            --dark-blue: #0d0221;
+            --cyber-purple: #4a1942;
+            --cyber-black: #0a0a0a;
+            --cyber-grey: #1a1a2e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        @font-face {
+            font-family: 'Orbitron';
+            src: url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap');
+        }
+
+        body {
+            background-color: var(--cyber-black);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--cyber-black);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--neon-blue);
+            border-radius: 4px;
+        }
+
+        /* Glitch Effect */
+        .glitch {
+            position: relative;
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #fff;
+            letter-spacing: 5px;
+            z-index: 1;
+            animation: glitch 2s infinite alternate;
+        }
+
+        @keyframes glitch {
+            0% {
+                text-shadow: 0.05em 0 0 var(--neon-pink), -0.05em -0.025em 0 var(--neon-blue),
+                    -0.025em 0.05em 0 var(--neon-orange);
+            }
+            14% {
+                text-shadow: 0.05em 0 0 var(--neon-pink), -0.05em -0.025em 0 var(--neon-blue),
+                    -0.025em 0.05em 0 var(--neon-orange);
+            }
+            15% {
+                text-shadow: -0.05em -0.025em 0 var(--neon-pink), 0.025em 0.025em 0 var(--neon-blue),
+                    -0.05em -0.05em 0 var(--neon-orange);
+            }
+            49% {
+                text-shadow: -0.05em -0.025em 0 var(--neon-pink), 0.025em 0.025em 0 var(--neon-blue),
+                    -0.05em -0.05em 0 var(--neon-orange);
+            }
+            50% {
+                text-shadow: 0.025em 0.05em 0 var(--neon-pink), 0.05em 0 0 var(--neon-blue),
+                    0 -0.05em 0 var(--neon-orange);
+            }
+            99% {
+                text-shadow: 0.025em 0.05em 0 var(--neon-pink), 0.05em 0 0 var(--neon-blue),
+                    0 -0.05em 0 var(--neon-orange);
+            }
+            100% {
+                text-shadow: -0.025em 0 0 var(--neon-pink), -0.025em -0.025em 0 var(--neon-blue),
+                    -0.025em -0.05em 0 var(--neon-orange);
+            }
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.15) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/png;base64,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');
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: 11;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--neon-blue);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--neon-blue);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-blue);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--neon-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to right, var(--cyber-black), var(--cyber-grey));
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: #fff;
+            text-shadow: 0 0 15px var(--neon-blue), 0 0 20px var(--neon-pink);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #ccc;
+            margin-bottom: 2rem;
+            letter-spacing: 3px;
+        }
+
+        .hero-description {
+            font-size: 1rem;
+            color: #aaa;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: transparent;
+            color: var(--neon-blue);
+            border: 2px solid var(--neon-blue);
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            margin: 0.5rem;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--neon-blue);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+
+        .cta-button:hover {
+            color: var(--cyber-black);
+            box-shadow: 0 0 20px var(--neon-blue);
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+        /* Game Inspiration Gallery */
+        .game-inspiration {
+            padding: var(--section-padding);
+            text-align: center;
+            background-color: #1a1a1a;
+        }
+        
+        .gallery-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .gallery-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .gallery-container img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .gallery-container img:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(109, 68, 217, 0.4);
+        }
+        
+        .game-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        
+        .game-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .game-item:hover .game-title {
+            transform: translateY(0);
+        }
+        /* Expanded Game Section */
+        .expanded-inspiration {
+            padding: var(--section-padding);
+            background-color: #1a1a1a;
+        }
+        
+        .expanded-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .expanded-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .game-card {
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #2a2a2a;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            transition: transform 0.3s ease;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .game-img {
+            height: 200px;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .game-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .game-card:hover .game-img img {
+            transform: scale(1.1);
+        }
+        
+        .game-info {
+            padding: 20px;
+        }
+        
+        .game-name {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .game-desc {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.5;
+        }
+        
+        .inspiration-tag {
+            display: inline-block;
+            background-color: rgba(109, 68, 217, 0.3);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 15px;
+        }
+
+        /* Slideshow */
+        .slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.3) contrast(1.2) saturate(1.5);
+        }
+
+        .slide-1 {
+            background-image: url('/api/placeholder/1920/1080');
+            animation: slideAnimation 24s infinite;
+        }
+
+        .slide-2 {
+            background-image: url('/api/placeholder/1920/1080');
+            animation: slideAnimation 24s infinite 8s;
+        }
+
+        .slide-3 {
+            background-image: url('/api/placeholder/1920/1080');
+            animation: slideAnimation 24s infinite 16s;
+        }
+
+        @keyframes slideAnimation {
+            0% { opacity: 0; transform: scale(1.05); }
+            4% { opacity: 1; }
+            33% { opacity: 1; }
+            37% { opacity: 0; transform: scale(1); }
+            100% { opacity: 0; }
+        }
+
+        /* 3D Game Model Section */
+        .model-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--cyber-grey);
+            padding: 5rem 2rem;
+        }
+
+        .model-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .model-title {
+            font-size: 2.5rem;
+            color: var(--neon-pink);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        .model-description {
+            font-size: 1rem;
+            color: #aaa;
+            max-width: 600px;
+            text-align: center;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .model-viewport {
+            width: 100%;
+            height: 400px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--neon-blue);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .model-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--neon-blue);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .model-controls {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .model-button {
+            background: transparent;
+            color: var(--neon-blue);
+            border: 1px solid var(--neon-blue);
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .model-button:hover {
+            background: var(--neon-blue);
+            color: var(--cyber-black);
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 5rem 2rem;
+            background: var(--cyber-black);
+            position: relative;
+        }
+
+        .projects-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--neon-orange);
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-align: center;
+            text-shadow: 0 0 10px var(--neon-orange);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--cyber-grey);
+            border: 1px solid var(--neon-blue);
+            padding: 1.5rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--neon-blue), var(--neon-pink));
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            color: var(--neon-blue);
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tag {
+            background: rgba(0, 255, 255, 0.1);
+            color: var(--neon-blue);
+            padding: 0.25rem 0.5rem;
+            font-size: 0.7rem;
+            border-radius: 3px;
+            border: 1px solid var(--neon-blue);
+        }
+
+        .project-link {
+            color: var(--neon-pink);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--neon-blue);
+            text-shadow: 0 0 5px var(--neon-blue);
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(to bottom, var(--cyber-grey), var(--cyber-black));
+            position: relative;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            display: block;
+            filter: grayscale(30%) contrast(120%);
+            transition: all 0.5s ease;
+        }
+
+        .about-image:hover img {
+            filter: grayscale(0%) contrast(100%);
+        }
+
+        .about-content {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .about-title {
+            font-size: 2.5rem;
+            color: var(--neon-blue);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .about-text {
+            color: #aaa;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .skill-item {
+            background: rgba(0, 255, 255, 0.1);
+            color: var(--neon-blue);
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            border-radius: 3px;
+            border: 1px solid var(--neon-blue);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            background: var(--cyber-black);
+            position: relative;
+            border-top: 1px solid var(--neon-blue);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-title {
+            font-size: 1.2rem;
+            color: var(--neon-blue);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .footer-link {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-link:hover {
+            color: var(--neon-blue);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid var(--neon-blue);
+            border-radius: 50%;
+            color: var(--neon-blue);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--neon-blue);
+            color: var(--cyber-black);
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .copyright {
+            text-align: center;
+            color: #555;
+            font-size: 0.8rem;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .about-image, .about-content {
+                flex: 1 1 100%;
+            }
+        }
+
+        /* Animated Hexagons Background */
+        .hexagon-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .hexagon {
+            position: absolute;
+            width: 100px;
+            height: 110px;
+            background: transparent;
+            border: 2px solid rgba(0, 255, 255, 0.1);
+            transform: rotate(30deg);
+            animation: floatHexagon 15s linear infinite;
+        }
+
+        @keyframes floatHexagon {
+            0% {
+                transform: rotate(30deg) translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.1;
+            }
+            90% {
+                opacity: 0.1;
+            }
+            100% {
+                transform: rotate(30deg) translateY(-1000px) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Grid Lines */
+        .grid-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(to right, rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: 0;
+        }
+
+        /* Neon Cursor */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--neon-blue);
+            box-shadow: 0 0 20px var(--neon-blue), 0 0 40px var(--neon-blue);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: screen;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Overlay Effects -->
+    <div class="overlay"></div>
+    <div class="noise"></div>
+    <div class="cursor" id="cursor"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">SAHIL SHARMA</div>
+        <nav class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#projects">Projects</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <a href="https://github.com/SKLORD69">GitHub</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="slideshow">
+        <div class="slide slide-1"></div>
+        <div class="slide slide-2"></div>
+        <div class="slide slide-3"></div>
+    </div>
+    <div class="grid-lines"></div>
+    <div class="hexagon-container" id="hexagonContainer">
+        <!-- Hexagons will be added dynamically with JavaScript -->
+    </div>
+    <div class="hero-content">
+        <h1 class="glitch">SAHIL SHARMA</h1>
+        <h2 class="hero-subtitle">ASPIRING GAME DEVELOPER & 3D ARTIST</h2>
+        <p class="hero-description">
+            Embarking on a journey to create immersive gaming experiences inspired by legendary titles like GTA, Red Dead Redemption, Prince of Persia, The Last of Us, Watch Dogs, PUBG PC, Valorant, Need for Speed, Call of Duty, Cyberpunk, and many more.
+        </p>
+        <div>
+            <a href="#projects" class="cta-button">View Projects</a>
+            <a href="#contact" class="cta-button">Contact Me</a>
+        </div>
+    </div>
+</section>
+
+ <!-- Game Inspiration Gallery (Original) -->
+ <section class="game-inspiration">
+    <h2 class="gallery-title">Games That Inspired Me</h2>
+    <p class="game-desc">These games have taught me that perseverance, strategic thinking, and learning from failures are the keys to success. They showed me the value of teamwork, courage in adversity, and the importance of making choices wisely. Through these experiences, I was inspired to become a game developer and want to create worlds where players can learn and grow just as I did.</p>
+
+    <div class="gallery-container">
+        <div class="game-item">
+            <img src="https://i.redd.it/66ffrzgh9g2a1.png" alt="GTA Series">
+            <div class="game-title">GTA Series</div>
+        </div>
+        <div class="game-item">
+            <img src="https://imageio.forbes.com/blogs-images/erikkain/files/2018/08/Screenshot-170.png?height=399&width=711&fit=bounds" alt="Red Dead Redemption">
+            <div class="game-title">Red Dead Redemption</div>
+        </div>
+        <div class="game-item">
+            <img src="https://www.giantbomb.com/a/uploads/scale_medium/8/87790/2280504-box_popttt.png" alt="Prince of Persia">
+            <div class="game-title">Prince of Persia</div>
+        </div>
+        <div class="game-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_EIgZzqB9mDJb5IGYWJgi8Psks7ZZ6DquDg&s" alt="The Last of Us">
+            <div class="game-title">The Last of Us</div>
+        </div>
+        <div class="game-item">
+            <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a0a00771-e86f-462c-b32a-c8a70da552b1/d6fdt35-c9a92a11-d871-4e3b-bb42-3fe979eecdd3.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2EwYTAwNzcxLWU4NmYtNDYyYy1iMzJhLWM4YTcwZGE1NTJiMVwvZDZmZHQzNS1jOWE5MmExMS1kODcxLTRlM2ItYmI0Mi0zZmU5NzllZWNkZDMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.3lYIQ6TPFhAHGeF2G8wqwIBZAez0SMmqVKE1hoZXwVU" alt="Watch Dogs">
+            <div class="game-title">Watch Dogs</div>
+        </div>
+        <div class="game-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-vgPF4lxcftHmPGuZ8cevHTQN9dI83lUl9A&s" alt="PUBG PC">
+            <div class="game-title">PUBG PC</div>
+        </div>
+        <div class="game-item">
+            <img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/77689751053a9cc507696fce850e345776667f0e-2560x1440.jpg" alt="Valorant">
+            <div class="game-title">Valorant</div>
+        </div>
+        <div class="game-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR__QFUyPQuX4L7Kg5waNLlpxFSJuqVCXD_qg&s" alt="Need for Speed">
+            <div class="game-title">Need for Speed</div>
+        </div>
+        <div class="game-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKXWXpJNCFt5W4U7CyhLUseC7IZlxNcYXblQ&s" alt="Call of Duty">
+            <div class="game-title">Call of Duty</div>
+        </div>
+        <div class="game-item">
+            <img src="https://img.freepik.com/premium-photo/cyberpunk-cityscape-futuristic-night-city-with-neon-lights-man-car-digital-art-cyberpunk-style-i_753333-10325.jpg?semt=ais_hybrid" alt="Cyberpunk 2077">
+            <div class="game-title">Cyberpunk 2077</div>
+        </div>
+    </div>
+</section>
+    <!-- Projects Section -->
+<section class="projects-section" id="projects">
+    <div class="hexagon-container"></div>
+    <div class="projects-container">
+        <h2 class="section-title">Practice Projects</h2>
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <h3 class="project-title">CV Project Iterations</h3>
+                <p class="project-description">
+                    A series of CV templates with progressive improvements in HTML/CSS structure and design principles.
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">HTML</span>
+                    <span class="project-tag">CSS</span>
+                    <span class="project-tag">Responsive</span>
+                </div>
+                <div style="margin-top: 1rem;">
+                    <a href="WDD/1.TrailCV/indexCV.html" class="project-link">Basic CV →</a><br>
+                    <a href="WDD/1.TrailCV/indexCV2.html" class="project-link">CV Version 2 →</a><br>
+                    <a href="WDD/1.TrailCV/enhancedCV.html" class="project-link">Enhanced CV →</a><br>
+                    <a href="WDD/1.TrailCV/ehncCV.html" class="project-link">Final CV →</a>
+                </div>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="project-card">
+                <h3 class="project-title">Integrated Page</h3>
+                <p class="project-description">
+                    A comprehensive web page that integrates multiple HTML/CSS concepts into a single cohesive design.
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">HTML5</span>
+                    <span class="project-tag">CSS3</span>
+                    <span class="project-tag">Layout</span>
+                </div>
+                <a href="WDD/2.Integrated PAGE/index.html" class="project-link">View Project →</a>
+            </div>
+            
+            <!-- Project 3 -->
+            <div class="project-card">
+                <h3 class="project-title">Tables and Forms</h3>
+                <p class="project-description">
+                    Practice projects focused on implementing responsive tables and interactive form elements.
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">Forms</span>
+                    <span class="project-tag">Tables</span>
+                    <span class="project-tag">Validation</span>
+                </div>
+                <div style="margin-top: 1rem;">
+                    <a href="WDD/3.Tables and form/index.html" class="project-link">Basic Version →</a><br>
+                    <a href="WDD/3.Tables and form/integrated.html" class="project-link">Integrated Version →</a>
+                </div>
+            </div>
+            
+            <!-- Project 4 -->
+            <div class="project-card">
+                <h3 class="project-title">Upcoming Projects</h3>
+                <p class="project-description">
+                    This section will be updated with additional practice projects as they are developed and added to the repository.
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">In Progress</span>
+                    <span class="project-tag">Coming Soon</span>
+                </div>
+                <a href="#" class="project-link">Check Back Later →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- About Section -->
+<section class="about-section" id="about">
+    <div class="grid-lines"></div>
+    <div class="about-container">
+        <div class="about-image">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQF57f1j9sEtMA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1728716313508?e=1746662400&v=beta&t=Ebej_jUGCzA53iVoMdZHfVlJzkgn4w5_zxRu61aV4t0" 
+            alt="Sahil Sharma - Aspiring Game Developer" 
+            style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+       
+        </div>
+        <div class="about-content">
+            <h2 class="about-title">About Me</h2>
+            <p class="about-text">
+                I'm Sahil Sharma, an aspiring game developer currently pursuing my first year of a BCA course at Amity University. This page serves as the foundation of my journey into the world of game development, connecting with my projects and repositories on GitHub.
+            </p>
+            <p class="about-text">
+                My passion for gaming stems from legendary titles like GTA, Red Dead Redemption, Prince of Persia, The Last of Us, Watch Dogs, PUBG PC, Valorant, Need for Speed, Call of Duty, Cyberpunk, and more. I'm focused on learning Unity, Unreal Engine, C++, and 3D asset creation to bring my creative ideas to life.
+            </p>
+            <h3 class="footer-title">Skills & Technologies</h3>
+            <div class="skill-list">
+                <span class="skill-item">Unity</span>
+                <span class="skill-item">Unreal Engine</span>
+                <span class="skill-item">C#</span>
+                <span class="skill-item">C++</span>
+                <span class="skill-item">3D Modeling</span>
+                <span class="skill-item">Shader Programming</span>
+                <span class="skill-item">Game Design</span>
+                <span class="skill-item">Blender</span>
+                <span class="skill-item">Substance Designer</span>
+            </div>
+            <a href="#contact" class="cta-button">Get in Touch</a>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="projects-section">
+    <div class="projects-container">
+        <h2 class="section-title">Contact Me</h2>
+        <div class="about-container">
+            <div class="about-content" style="margin: 0 auto; max-width: 600px; text-align: center;">
+                <p class="about-text">
+                    Interested in collaborating or have a project in mind? Feel free to reach out!
+                </p>
+                <div style="margin: 3rem 0; text-align: center;">
+                    <a href="mailto:heproc361004@gmail.com" class="cta-button">Email Me</a>
+                    <a href="https://www.linkedin.com/in/sahil-sharma-3b5143214/" class="cta-button">LinkedIn</a>
+                    <a href="https://github.com/SKLORD69" class="cta-button">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Expanded Game Inspirations Section -->
+<section class="expanded-inspiration">
+    <h2 class="expanded-title">More Games That are Shaping My Development Journey</h2>
+    <div class="game-grid">
+        <div class="game-card">
+            <div class="game-img">
+                <img src="https://i.pinimg.com/736x/fe/55/56/fe5556a1965044bd30bf770cdef714df.jpg" alt="The Witcher 3">
+            </div>
+            <div class="game-info">
+                <h3 class="game-name">The Witcher 3</h3>
+                <p class="game-desc">As an aspiring game dev, I learned from The Witcher 3 the importance of moral ambiguity and deep world-building, inspiring me to create complex narratives where choices matter.</p>
+
+                <span class="inspiration-tag">World Building</span>
+            </div>
+        </div>
+        
+        <div class="game-card">
+            <div class="game-img">
+                <img src="https://i.ytimg.com/vi/cyGgNaj3v4k/sddefault.jpg" alt="Uncharted 4">
+            </div>
+            <div class="game-info">
+                <h3 class="game-name">Uncharted 4</h3>
+                <p class="game-desc">From Uncharted 4, I learned the power of storytelling and emotional depth in characters, pushing me to craft cinematic experiences that resonate with players.</p>
+                <span class="inspiration-tag">Cinematic Design</span>
+            </div>
+        </div>
+        
+        <div class="game-card">
+            <div class="game-img">
+                <img src="https://preview.redd.it/assassins-creed-2007-still-looking-this-good-is-crazy-v0-he9rj4wmj76e1.png?width=640&crop=smart&auto=webp&s=97ace45172f50c0b1495c1d4c27295c512b52015" alt="Assassin's Creed">
+            </div>
+            <div class="game-info">
+                <h3 class="game-name">Assassin's Creed</h3>
+                <p class="game-desc">Assassin's Creed taught me the value of historical context and seamless parkour mechanics, which I aim to integrate for immersive exploration.</p>
+                <span class="inspiration-tag">Movement Systems</span>
+            </div>
+        </div>
+        
+        <div class="game-card">
+            <div class="game-img">
+                <img src="https://miro.medium.com/v2/resize:fit:1400/1*tKSRQABexCPQ2V1_ws6usQ.png" alt="God of War">
+            </div>
+            <div class="game-info">
+                <h3 class="game-name">God of War (2018)</h3>
+                <p class="game-desc">Revolutionized my understanding of camera design and character progression.</p>
+                <span class="inspiration-tag">Combat Design</span>
+            </div>
+        </div>
+        
+        <div class="game-card">
+            <div class="game-img">
+                <img src="https://cdn.80.lv/api/upload/content/47/images/5d2cfebb97093/widen_1840x0.jpg" alt="Horizon Zero Dawn">
+            </div>
+            <div class="game-info">
+                <h3 class="game-name">Horizon Zero Dawn</h3>
+                <p class="game-desc">Horizon Zero Dawn's AI and strategic combat taught me to design enemies that challenge players thoughtfully, not just with difficulty.</p>
+
+                <span class="inspiration-tag">AI Systems</span>
+            </div>
+        </div>
+        
+        <div class="game-card">
+            <div class="game-img">
+                <img src="https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/screenshots/1.21.2%201170x500.jpg" alt="Minecraft">
+            </div>
+            <div class="game-info">
+                <h3 class="game-name">Minecraft</h3>
+                <p class="game-desc">Minecraft taught me the significance of creativity and player freedom, motivating me to design systems that empower player expression.</p>
+                <span class="inspiration-tag">Procedural Design</span>
+            </div>
+        </div>
+        
+        <div class="game-card">
+            <div class="game-img">
+                <img src="https://i.pcmag.com/imagery/reviews/00XpAmYpxd6wvLkvIO672zY-3..v1569469918.png" alt="Fortnite">
+            </div>
+            <div class="game-info">
+                <h3 class="game-name">Fortnite</h3>
+                <p class="game-desc">Influenced my understanding of live service games and community engagement.</p>
+                <span class="inspiration-tag">Live Service</span>
+            </div>
+        </div>
+        
+        <div class="game-card">
+            <div class="game-img">
+                <img src="https://assetsio.gnwcdn.com/elden_ring_review_view_over_the_world.jpg?width=1200&height=1200&fit=bounds&quality=70&format=jpg&auto=webp" alt="Elden Ring">
+            </div>
+            <div class="game-info">
+                <h3 class="game-name">Elden Ring</h3>
+                <p class="game-desc">Shaped my philosophy on difficulty balancing and environmental storytelling.</p>
+                <span class="inspiration-tag">Level Design</span>
+            </div>
+        </div>
+        
+        <div class="game-card">
+            <div class="game-img">
+                <img src="https://media.altchar.com/prod/images/gm_article_promo_image/7c2bc7a44dbd-ghost-of-tsushima.png" alt="Ghost of Tsushima">
+            </div>
+            <div class="game-info">
+                <h3 class="game-name">Ghost of Tsushima</h3>
+                <p class="game-desc">Inspired my approach to atmospheric design and player navigation systems.</p>
+                <span class="inspiration-tag">Art Direction</span>
+            </div>
+        </div>
+        
+        <div class="game-card">
+            <div class="game-img">
+                <img src="https://cdn.mos.cms.futurecdn.net/kMxox5TWNQVzpeWiZ2sVmC-1200-80.jpg" alt="Half-Life: Alyx">
+            </div>
+            <div class="game-info">
+                <h3 class="game-name">Half-Life: Alyx</h3>
+                <p class="game-desc">Influenced my interest in VR interaction design and immersive storytelling.</p>
+                <span class="inspiration-tag">VR Design</span>
+            </div>
+        </div>
+        
+        <div class="game-card">
+            <div class="game-img">
+                <img src="https://assetsio.gnwcdn.com/portint10.jpg?width=1200&height=1200&fit=crop&quality=100&format=png&enable=upscale&auto=webp" alt="Portal 2">
+            </div>
+            <div class="game-info">
+                <h3 class="game-name">Portal 2</h3>
+                <p class="game-desc">Shaped my approach to puzzle design and environmental storytelling.</p>
+                <span class="inspiration-tag">Puzzle Mechanics</span>
+            </div>
+        </div>
+        
+        <div class="game-card">
+            <div class="game-img">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjUGEIokFADH-sAQCwLW8NaTe6a6uZkR_6VA&s" alt="Death Stranding">
+            </div>
+            <div class="game-info">
+                <h3 class="game-name">Death Stranding</h3>
+                <p class="game-desc">Inspired my thinking about innovative gameplay mechanics and social features.</p>
+                <span class="inspiration-tag">Innovative Mechanics</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3 class="footer-title">Sahil Sharma</h3>
+            <p style="color: #aaa; margin-bottom: 1rem; line-height: 1.6;">
+                Aspiring Game Developer & 3D Artist exploring immersive gaming experiences and interactive design.
+            </p>
+            <div class="social-links">
+                <a href="#" class="social-link">FB</a>
+                <a href="#" class="social-link">TW</a>
+                <a href="#" class="social-link">IG</a>
+                <a href="#" class="social-link">YT</a>
+            </div>
+        </div>
+        <div class="footer-column">
+            <h3 class="footer-title">Quick Links</h3>
+            <div class="footer-links">
+                <a href="#home" class="footer-link">Home</a>
+                <a href="#projects" class="footer-link">Projects</a>
+                <a href="#about" class="footer-link">About</a>
+                <a href="#contact" class="footer-link">Contact</a>
+            </div>
+        </div>
+        <div class="footer-column">
+            <h3 class="footer-title">Resources</h3>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Game Dev Blog</a>
+                <a href="#" class="footer-link">Tutorials</a>
+                <a href="#" class="footer-link">Asset Store</a>
+                <a href="#" class="footer-link">Press Kit</a>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        © 2025 Sahil Sharma. All rights reserved.
+    </div>
+</footer>
+
+
+    <!-- JavaScript -->
+    <script>
+        // Create hexagons for background
+        const hexagonContainer = document.getElementById('hexagonContainer');
+        const numberOfHexagons = 20;
+        
+        for (let i = 0; i < numberOfHexagons; i++) {
+            const hexagon = document.createElement('div');
+            hexagon.classList.add('hexagon');
+            
+            // Random positioning and timing
+            const randomX = Math.random() * 100;
+            const randomY = Math.random() * 100 + 100;
+            const randomDelay = Math.random() * 15;
+            const randomDuration = 15 + Math.random() * 10;
+            
+            hexagon.style.left = `${randomX}%`;
+            hexagon.style.bottom = `-${randomY}px`;
+            hexagon.style.animationDelay = `${randomDelay}s`;
+            hexagon.style.animationDuration = `${randomDuration}s`;
+            
+            hexagonContainer.appendChild(hexagon);
+        }
+        
+        // Custom cursor effect
+        const cursor = document.getElementById('cursor');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.opacity = '1';
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+        });
+        
+        document.addEventListener('mouseout', () => {
+            cursor.style.opacity = '0';
+        });
+        
+        // Navigation smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
